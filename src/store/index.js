@@ -12,8 +12,16 @@ const model = {
     //methods
     addTodo : action(({todos} , payload)=>{
         payload.id = `${nanoid()} || ${payload.tittle}`;
-        payload.timeStamp = new Date();
+        payload.status = false;
+        payload.createdTimeStamp = new Date();
         todos[payload.id] = payload;
+    }),
+    statusTrasnform : action(({todos} , todoId) => {
+        const todo = todos[todoId];
+        todo.status = (todo.status == false ? true : false );
+    }),
+    deleteTodo : action(({todos} , todoId)=>{
+        delete todos[todoId];
     })
 }
 const store = createStore(model);

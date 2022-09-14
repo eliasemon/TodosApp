@@ -4,8 +4,7 @@ import { useState } from 'react';
 const initialTodos = {
     tittle : "",
     id : "",
-    createdTimeStamp : "",
-     editedTimeStamp : [],
+    editedTimeStamp : []
 }
 const CreateTodo = () =>{
     const {addTodo} = useStoreActions(actions => actions);
@@ -16,7 +15,7 @@ const CreateTodo = () =>{
     }
     const submitHandle = () =>{
         addTodo(state);
-        setState(initialTodos);
+        setState(()=> ({...initialTodos}));
     }
     return(
         <>
