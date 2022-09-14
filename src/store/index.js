@@ -22,6 +22,9 @@ const model = {
     }),
     deleteTodo : action(({todos} , todoId)=>{
         delete todos[todoId];
+    }),
+    tittleInfoUpdate : action(({todos} , {updatedTittle , todoId}) => {
+        todos[todoId].tittle = updatedTittle;
     })
 }
 const store = createStore(model);
